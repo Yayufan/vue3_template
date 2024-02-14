@@ -34,7 +34,7 @@ async function submitLogin() {
    console.log(normalUser)
    let result = await axios.post(
       //"http://localhost:5173/dev-api/demo/user/doLogin",
-      "/dev-api/demo/user/doLogin",
+      "/dev-api/user/doLogin",
       toRaw(user)
    
    )
@@ -46,7 +46,7 @@ async function submitLogin() {
 async function isLogin() {
    
    let result = await axios.get(
-      "http://localhost:5173/dev-api/demo/user/isLogin"
+      "http://localhost:5173/dev-api/user/isLogin"
 
    
    )
