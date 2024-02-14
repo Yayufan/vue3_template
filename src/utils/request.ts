@@ -1,4 +1,6 @@
 import axios, {type AxiosResponse, type InternalAxiosRequestConfig } from 'axios';
+//這邊其實不用引入,因為有自動裝配插件,但是因為紅字很討厭,所以顯式引入他
+import { ElMessage } from "element-plus";
 
 // 创建 axios 实例
 const service = axios.create({
@@ -10,7 +12,24 @@ const service = axios.create({
 // 添加请求拦截器
 service.interceptors.request.use(function (config: InternalAxiosRequestConfig) {
     // 在发送请求之前做些什么
-    
+    //獲取Storage中的Token值
+    let Authorization = localStorage.getItem("Authorization")
+    console.log(Authorization)
+    if(typeof(Authorization) != 'string'){
+        ElMessage({
+            message: '沒有token',
+            type: 'error',
+          })
+    }else{
+
+        
+
+        // ElMessage({
+        //     message: '有token',
+        //     type: 'success',
+        //   })
+    }
+
     return config;
 }, function (error) {
     // 对请求错误做些什么
