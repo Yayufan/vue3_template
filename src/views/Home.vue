@@ -17,6 +17,10 @@
    </el-row>
    <br>
    <button @click="isLogin">是否登入</button>
+
+   <br>
+
+   <button @click="increment(5)">點我+數量及跳轉 </button>
 </template>
 
 <script setup lang="ts">
@@ -24,11 +28,14 @@
 import { toRaw, reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import request from '@/utils/request'
+import {useCounterStore} from '@/stores/counter'
 
 //localStorage.setItem("myKey", "abc")
 //localStorage.removeItem('myKey')
 
-const router = useRouter()
+let {increment} = useCounterStore()
+
+//  increment(5)
 
 let user = reactive({
    email: "",
