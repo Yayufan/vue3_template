@@ -6,7 +6,15 @@
    <input v-model="user.password">
    <button @click="submitLogin">送出</button>
 
-   
+
+   <el-row class="mb-4">
+      <el-button>Default</el-button>
+      <el-button type="primary">Primary</el-button>
+      <el-button type="success">Success</el-button>
+      <el-button type="info">Info</el-button>
+      <el-button type="warning">Warning</el-button>
+      <el-button type="danger">Danger</el-button>
+   </el-row>
    <br>
    <button @click="isLogin">是否登入</button>
 </template>
@@ -16,6 +24,12 @@
 import { toRaw, reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import axios from 'axios'
+
+localStorage.setItem("myKey", "abc")
+
+
+console.log(localStorage.getItem("myKey"))
+
 
 const router = useRouter()
 
@@ -36,7 +50,7 @@ async function submitLogin() {
       //"http://localhost:5173/dev-api/demo/user/doLogin",
       "/dev-api/user/doLogin",
       toRaw(user)
-   
+
    )
 
 
@@ -44,11 +58,11 @@ async function submitLogin() {
 }
 
 async function isLogin() {
-   
+
    let result = await axios.get(
       "http://localhost:5173/dev-api/user/isLogin"
 
-   
+
    )
 
 

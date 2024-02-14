@@ -1,5 +1,11 @@
 import { fileURLToPath, URL } from 'node:url'
+//loadEnv為加載當前環境的配置項
 import { defineConfig, loadEnv } from 'vite'
+//以下三個為Element plus按需引入的配置項
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+//VueSetupExtend為Vue組件重命名的擴展
 import VueSetupExtend from 'vite-plugin-vue-setup-extend'
 import vue from '@vitejs/plugin-vue'
 
@@ -29,6 +35,12 @@ export default defineConfig(({ command, mode }) => {
     plugins: [
       vue(),
       VueSetupExtend(),
+      AutoImport({
+        resolvers: [ElementPlusResolver()],
+      }),
+      Components({
+        resolvers: [ElementPlusResolver()],
+      }),
 
     ],
     resolve: {
