@@ -1,6 +1,6 @@
 import axios, {type AxiosResponse, type InternalAxiosRequestConfig } from 'axios';
 //這邊其實不用引入,因為有自動裝配插件,但是因為紅字很討厭,所以顯式引入他
-import { ElMessage } from "element-plus";
+// import {ElMessage} from "element-plus";
 
 // 创建 axios 实例
 const service = axios.create({
@@ -16,13 +16,17 @@ service.interceptors.request.use(function (config: InternalAxiosRequestConfig) {
     let Authorization = localStorage.getItem("Authorization")
     console.log(Authorization)
     if(typeof(Authorization) != 'string'){
-        ElMessage({
-            message: '沒有token',
-            type: 'error',
-          })
+
+        console.log(config.headers)
+
+        config.headers['Authorization'] = 'Bearer ' + '123456';
+
+        console.log(config.headers)
+
+
     }else{
 
-        
+
 
         // ElMessage({
         //     message: '有token',
@@ -40,6 +44,10 @@ service.interceptors.request.use(function (config: InternalAxiosRequestConfig) {
 service.interceptors.response.use(function (res: AxiosResponse) {
     // 2xx 范围内的状态码都会触发该函数。
     // 对响应数据做点什么
+    ElMessage({
+        message: '沒有token',
+        type: 'error',
+      })
     return res;
 }, function (error) {
     // 超出 2xx 范围的状态码都会触发该函数。
