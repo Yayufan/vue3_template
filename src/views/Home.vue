@@ -25,7 +25,8 @@ import { toRaw, reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import request from '@/utils/request'
 
-localStorage.setItem("myKey", "abc")
+//localStorage.setItem("myKey", "abc")
+//localStorage.removeItem('myKey')
 
 const router = useRouter()
 
