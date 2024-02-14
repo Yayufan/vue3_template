@@ -2,6 +2,7 @@ import axios, {type AxiosResponse, type InternalAxiosRequestConfig } from 'axios
 //這邊其實不用引入,因為有自動裝配插件,但是因為紅字很討厭,所以顯式引入他
 // import {ElMessage} from "element-plus";
 
+
 // 创建 axios 实例
 const service = axios.create({
     baseURL: import.meta.env.VITE_APP_BASE_API,
@@ -15,18 +16,21 @@ service.interceptors.request.use(function (config: InternalAxiosRequestConfig) {
     //獲取Storage中的Token值
     let Authorization = localStorage.getItem("Authorization")
     console.log(Authorization)
-    if(typeof(Authorization) != 'string'){
+    if(typeof(Authorization) == 'string'){
 
         console.log(config.headers)
 
-        config.headers['Authorization'] = 'Bearer ' + '123456';
+        config.headers['Authorization'] = Authorization;
 
         console.log(config.headers)
 
 
     }else{
 
-
+        ElMessage({
+            message: '沒有token',
+            type: 'error',
+          })
 
         // ElMessage({
         //     message: '有token',
@@ -44,14 +48,18 @@ service.interceptors.request.use(function (config: InternalAxiosRequestConfig) {
 service.interceptors.response.use(function (res: AxiosResponse) {
     // 2xx 范围内的状态码都会触发该函数。
     // 对响应数据做点什么
-    ElMessage({
-        message: '沒有token',
-        type: 'error',
-      })
-    return res;
+
+    //這邊直接返回res.data,這樣獲取數據時就減少一層訪問
+    return res.data;
+
 }, function (error) {
     // 超出 2xx 范围的状态码都会触发该函数。
     // 对响应错误做点什么
+    ElMessage({
+        message: `伺服器異常 , ${error.message}`,
+        type: 'error',
+      })
+
     return Promise.reject(error);
 });
 
