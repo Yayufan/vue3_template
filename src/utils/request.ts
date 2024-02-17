@@ -27,15 +27,7 @@ service.interceptors.request.use(function (config: InternalAxiosRequestConfig) {
 
     }else{
 
-        ElMessage({
-            message: '沒有token',
-            type: 'error',
-          })
 
-        // ElMessage({
-        //     message: '有token',
-        //     type: 'success',
-        //   })
     }
 
     return config;
