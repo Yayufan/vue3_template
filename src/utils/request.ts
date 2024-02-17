@@ -15,7 +15,7 @@ service.interceptors.request.use(function (config: InternalAxiosRequestConfig) {
     // 在发送请求之前做些什么
     //獲取Storage中的Token值
     let Authorization = localStorage.getItem("Authorization")
-    console.log(Authorization)
+    console.log("前端axios請求攔截器打印Token",Authorization)
     if(typeof(Authorization) == 'string'){
 
         console.log(config.headers)

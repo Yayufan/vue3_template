@@ -58,7 +58,7 @@ async function submitLogin() {
 
 
    console.log(result.data)
-   //localStorage.setItem()
+   localStorage.setItem(result.data.tokenName,'Bearer'+ ' ' + result.data.tokenValue)
 
 
 }
@@ -67,12 +67,9 @@ async function isLogin() {
 
    let result = await request.get(
       "/user/isLogin"
-
-
    )
 
-
-   console.log(result.data)
+   console.log(result)
 }
 </script>
 

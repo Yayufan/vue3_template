@@ -22,25 +22,25 @@ import { RouterLink, RouterView } from 'vue-router'
 import { ref, reactive, onBeforeUnmount, onMounted } from "vue"
 import { type Persons } from "@/types/Person"
 
-onMounted(() => {
-  //設立瀏覽器監聽,如果離開當前頁面則刪除token
-  let beginTime = 0; //开始时间
-  let differTime = 0; //时间差
-  window.onunload = function () {
-    differTime = new Date().getTime() - beginTime;
-    if (differTime <= 5) {
-      console.log("這是關閉");
-      localStorage.removeItem('myKey')
-    } else {
-      console.log("这是刷新");
-    }
-  };
+// onMounted(() => {
+//   //設立瀏覽器監聽,如果離開當前頁面則刪除token
+//   let beginTime = 0; //开始时间
+//   let differTime = 0; //时间差
+//   window.onunload = function () {
+//     differTime = new Date().getTime() - beginTime;
+//     if (differTime <= 5) {
+//       console.log("這是關閉");
+//       localStorage.removeItem('myKey')
+//     } else {
+//       console.log("这是刷新");
+//     }
+//   };
 
-  window.onbeforeunload = function () {
-    beginTime = new Date().getTime();
-  };
+//   window.onbeforeunload = function () {
+//     beginTime = new Date().getTime();
+//   };
 
-})
+// })
 
 
 let personList = reactive<Persons>([
