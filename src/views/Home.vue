@@ -22,7 +22,10 @@
 
    <button @click="increment(5)">點我+數量及跳轉 </button>
 
-   <img src="" style="width:300px;height:200px">
+   <!--靜態資源訪問-->
+   <!-- <img src="@/assets/image/agneda.png" style="width:300px;height:200px"> -->
+
+   <img src="http://localhost:5173/minio/joey-test/agneda.png" style="width:300px;height:200px">
 
 </template>
 

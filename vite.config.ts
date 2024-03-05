@@ -54,18 +54,12 @@ export default defineConfig(({ command, mode }) => {
       //port: Number(env.VITE_APP_PORT),  此為更改開發server的port,沒事的話用預設的就好
       open: true,
       proxy: {
-        // [env.VITE_APP_BASE_API]: {
-        //   target: 'http://localhost:8080',
-        //   changeOrigin: true,  //跨域處理
-        //   ws: true,  //是否可啟用Websocket,true為可以
-        //   //將/dev-api重寫為''空字串,這樣後端就不用添加dev-api開頭了
-        //   rewrite: (path) => path.replace(new RegExp('^' + env.VITE_APP_BASE_API), '')
-        // },
-        ['/minio']: {
-          target: 'http://192.168.56.1:9000',
+        [env.VITE_APP_BASE_API]: {
+          target: 'http://localhost:8080',
           changeOrigin: true,  //跨域處理
+          ws: true,  //是否可啟用Websocket,true為可以
           //將/dev-api重寫為''空字串,這樣後端就不用添加dev-api開頭了
-          rewrite: (path) => path.replace(new RegExp('^' + "/minio"), '')
+          rewrite: (path) => path.replace(new RegExp('^' + env.VITE_APP_BASE_API), '')
         }
       }
     }
