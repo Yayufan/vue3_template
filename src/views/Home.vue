@@ -21,19 +21,45 @@
    <br>
 
    <button @click="increment(5)">點我+數量及跳轉 </button>
+
+   <img src="" style="width:300px;height:200px">
+
 </template>
 
 <script setup lang="ts">
 
-import { toRaw, reactive, ref } from 'vue'
+import { toRaw, reactive, ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import request from '@/utils/request'
-import {useCounterStore} from '@/stores/counter'
+import { useCounterStore } from '@/stores/counter'
+import axios from 'axios'
+
+// const imageSrc = ref('');
+
+
+// onMounted(() => {
+//    axios.get('/minio/joey-test/agneda.png',{responseType: 'arraybuffer'})
+//       .then(response => {
+//          // 处理图片数据
+//          console.log(response.data);
+
+//          // 将图片数据转换为 Blob 对象
+//         const blob = new Blob([response.data], { type: 'image/jpeg' });
+        
+//         // 创建一个 URL 对象
+//         imageSrc.value = URL.createObjectURL(blob);
+//       })
+//       .catch(error => {
+//          // 处理错误
+//          console.error('Error fetching image:', error);
+//       });
+// })
+
 
 //localStorage.setItem("myKey", "abc")
 //localStorage.removeItem('myKey')
 
-let {increment} = useCounterStore()
+let { increment } = useCounterStore()
 
 //  increment(5)
 
@@ -58,7 +84,7 @@ async function submitLogin() {
 
 
    console.log(result.data)
-   localStorage.setItem(result.data.tokenName,'Bearer'+ ' ' + result.data.tokenValue)
+   localStorage.setItem(result.data.tokenName, 'Bearer' + ' ' + result.data.tokenValue)
 
 
 }
