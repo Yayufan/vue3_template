@@ -22,6 +22,7 @@ const router = createRouter({
       children: [
         {
           name: 'detail',
+          //Params參數佔位符路由
           path: 'detail/:id/:title/:content',
           component: ()=> import('@/views/NewsDetail.vue'),
           props:true
