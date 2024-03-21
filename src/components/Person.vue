@@ -7,7 +7,7 @@
     </div>
 </template>
   
-<script lang="ts" setup name="Person">
+<script lang="ts" setup name="Person235">
 
 import { type Person, type Persons } from "@/types/Person"
 import useSum from "@/hooks/person/useSum"

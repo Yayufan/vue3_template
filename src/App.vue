@@ -7,6 +7,8 @@
       <RouterLink to="/" class="navItem" active-class="active">首頁</RouterLink>
       <RouterLink to="/news" class="navItem" active-class="active">新聞</RouterLink>
       <RouterLink replace :to="{ name: 'about' }" class="navItem" active-class="active">關於</RouterLink>
+
+      <Person></Person>
     </nav>
     
     <br>

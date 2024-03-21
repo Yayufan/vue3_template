@@ -1,8 +1,10 @@
 <template>
-    我是About
-    <Count></Count>
-    <br>
-    <LoveTalk></LoveTalk>
+    <div>
+        我是About
+        <Count></Count>
+        <br>
+        <LoveTalk></LoveTalk>
+    </div>
 </template>
 
 <script setup lang="ts">
@@ -11,6 +13,4 @@ import LoveTalk from "@/components/LoveTalk.vue"
 
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
