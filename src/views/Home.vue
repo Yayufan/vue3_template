@@ -97,9 +97,16 @@ async function isLogin() {
    let result = await request.get(
       "/user/isLogin"
    )
-
    console.log(result)
 }
+
+
+//測試獲取一個對象
+request.get("/user/test").then(res=>{
+   console.log(res)
+   ElMessage.success(res.data.name)
+})
+
 </script>
 
 

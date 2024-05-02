@@ -32,6 +32,8 @@ export default defineConfig(({ command, mode }) => {
     // 例如，如果你的应用被部署在 https://www.ruoyi.vip/admin/，则设置 baseUrl 为 /admin/。
 
     // base:env.VITE_APP_CONTEXT_PATH,
+    
+    
     plugins: [
       vue(),
       VueSetupExtend(),
